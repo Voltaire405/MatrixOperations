@@ -1,0 +1,3 @@
+function isInvalidForm() {
+    return false;
+}

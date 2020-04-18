@@ -1,0 +1,30 @@
+section{    
+    margin-top: 5% !important;
+}
+h2{
+    text-align: center;
+}
+
+div #rep1, #rep2{
+    margin: 20px 20px 20px 20px;
+}
+
+#clearBtn{
+    display: block;
+}
+
+td {
+    border-style: solid;
+
+    font-size: 40px;
+
+    width: 50px;
+
+    text-align: center;
+
+    background-color: antiquewhite;
+}
+
+#clearBtn{
+    margin-top: 2%;
+}
