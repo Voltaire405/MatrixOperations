@@ -36,7 +36,16 @@ Array.prototype.fillMatrix = function (order) {
 Array.prototype.fitArray = function () {
     let array = new Array();
     for (let index = 1; index < this.length; index++) {
-        array.push(this[index].slice(1));                
-    }            
+        array.push(this[index].slice(1));
+    }
     return array;
+}
+
+Boolean.prototype.getMeaning = function (value) {
+    debugger;
+    if (value) {
+        return 'Si';
+    } else {
+        return 'No';
+    }
 }

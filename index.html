@@ -47,11 +47,12 @@
         </section>
         <hr>
         <div id="userpanel" class="row">
-            <form class="form-group col-md-3" id="settingPanel" >
+            <form class="form-group col-md-3" id="settingPanel">
                 <div>
                     <div class="component">
                         <label for="dim">Dimensión de la matriz</label>
-                        <input class="form-control" type="number" id="dim" size="1" maxlength="4" min="4" max="8" required>
+                        <input class="form-control" type="number" id="dim" size="1" maxlength="4" min="4" max="8"
+                            required>
                     </div>
                     <br>
                     <div class="component">
@@ -84,29 +85,26 @@
 
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm" id="inputBtn">Ingresar Dato</button>
-                <button type="button" class="btn btn-success btn-sm" id="printBtn" style="display: none;">Graficar</button>                
+                <button type="button" class="btn btn-success btn-sm" id="printBtn"
+                    style="display: none;">Graficar</button>
             </form>
             <div class="col-md-3">
                 <label for="counter">Datos Ingresados:</label>
                 <input type="number" disabled id="counter" value="0" size="1">
                 <button type="button" class="btn btn-danger btn-sm" id="clearBtn">limpiar</button>
             </div>
-            
-            <div class="col-md-3" id="operationsPanel" style="display: none;">
-                <label for="calcSelect">Operaciones</label>
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown" id="calcSelect">
-                    <button type="button" class="btn btn-secondary">Calcular</button>
 
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Seleccione
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Simétría</a>
-                            <a class="dropdown-item" href="#">Determinante</a>
-                            <a class="dropdown-item" href="#">Pto. Silla</a>
-                        </div>
+            <div class="col-md-3" id="operationsPanel">
+                <label for="calcSelect">Operaciones</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" id="calcSelect">
+                        Seleccionar Operación
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="calculateSimmetry();">Simetría</a>
+                        <a class="dropdown-item" onclick="calculateDeterminant();">Determinante</a>
+                        <a class="dropdown-item" onclick="isChair();">Punto de Silla</a>
                     </div>
                 </div>
             </div>
@@ -115,6 +113,9 @@
         <script src="controller/components.js"></script>
         <script src="model/prototypeFunctions.js"></script>
         <script src="model/renders.js"></script>
+        <script src="model/NodoDoble.js"></script>
+        <script src="model/Tripleta.js"></script>
+        <script src="model/MatrizForma1.js"></script>
         <script src="controller/mainController.js"></script>
 </body>
 
