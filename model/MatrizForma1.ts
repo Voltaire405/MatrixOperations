@@ -36,13 +36,7 @@ class MatrizForma1{
     }
 
     public mostrarMatriz():void{
-        let qf: number;
-        let qc: number;
-        let qv: number;
-        let p: NodoDoble;
-        let q: NodoDoble;
-        let tq: Tripleta;
-        let tp: Tripleta;
+        let qf, qc, qv, p, q, tq, tp
         p=this.primerNodo();
         while(!this.finDeRecorrido(p)){
             q=p.getLd();
@@ -64,8 +58,7 @@ class MatrizForma1{
     }
 
     public construyeNodosCabeza():void{
-        let mayor: number;
-        let i: number;
+        let mayor;
         let x: NodoDoble;
         let ultimo: NodoDoble;
         let t: Tripleta;
@@ -247,7 +240,73 @@ class MatrizForma1{
     }
 
     public determinante():number{
-        return;
+        if(this.numeroFilas()!=this.numeroColumnas()){
+            console.log("m*n");
+            return NaN;
+        }
+        let resultado=0;
+        let p=this.primerNodo();
+        let q=p.getLd();
+        let tq, a;
+
+        //caso base
+        if(this.numeroFilas()==1){
+            if(q==p)return 0;
+            tq=q.getDato();
+            resultado=tq.getValor();
+            return resultado;
+        }
+
+        
+        while(q!=p){
+            tq=q.getDato();
+            a=tq.getValor();
+            a=a*(Math.pow(-1,(tq.getFila()+tq.getColumna())));
+            let matrizNueva: MatrizForma1=this.matrizNueva(tq.getColumna());
+            //console.log(a)
+            //to do: a*matriz más pequeña
+            resultado+=(a*matrizNueva.determinante());
+            q=q.getLd();
+        }
+
+        return resultado;
+    }
+
+    public matrizNueva(columna: number):MatrizForma1{
+        let p, q, tq, tp, tx, x
+        let n=this.numeroFilas();
+        let matrizNueva:MatrizForma1= new MatrizForma1(n-1, n-1);
+        matrizNueva.construyeNodosCabeza();
+        p=this.primerNodo();
+        tp=p.getDato();
+        p=tp.getValor();
+
+        let i=0;
+        let j=0;
+        while(!this.finDeRecorrido(p)){
+            q=p.getLd();
+            while(q!=p){
+                tq=q.getDato();
+                if( tq.getColumna()!=columna){
+                    i=tq.getFila()-1;
+                    j=tq.getColumna();
+                    if(j>columna)j--;
+                    tx= new Tripleta(i, j, tq.getValor());
+                    x= new NodoDoble(tx);
+                    matrizNueva.conectaPorFilas(x);
+                    matrizNueva.conectaPorColumnas(x);
+                }
+                q=q.getLd();
+            }
+            j=0;
+            tp=p.getDato();
+            p=tp.getValor();
+        }
+        /*<console.log("\nmatriz: " + n)
+        matrizNueva.mostrarMatriz();
+        */
+
+        return matrizNueva;
     }
 
     /**
@@ -296,7 +355,7 @@ class MatrizForma1{
             tp=p.getDato();
             p=tp.getValor();
         }
-        respuesta=[-1];
+        respuesta=[0];
         return respuesta;
     }
 

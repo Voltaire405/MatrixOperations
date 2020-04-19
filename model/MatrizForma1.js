@@ -28,13 +28,7 @@ var MatrizForma1 = /** @class */ (function () {
         return (p == this.mat);
     };
     MatrizForma1.prototype.mostrarMatriz = function () {
-        var qf;
-        var qc;
-        var qv;
-        var p;
-        var q;
-        var tq;
-        var tp;
+        var qf, qc, qv, p, q, tq, tp;
         p = this.primerNodo();
         while (!this.finDeRecorrido(p)) {
             q = p.getLd();
@@ -54,7 +48,6 @@ var MatrizForma1 = /** @class */ (function () {
     };
     MatrizForma1.prototype.construyeNodosCabeza = function () {
         var mayor;
-        var i;
         var x;
         var ultimo;
         var t;
@@ -66,8 +59,8 @@ var MatrizForma1 = /** @class */ (function () {
         if (n > m) {
             mayor = n;
         }
-        for (var i_1 = 1; i_1 <= mayor; i_1++) {
-            t = new Tripleta(i_1, i_1, this.nodoCabeza());
+        for (var i = 1; i <= mayor; i++) {
+            t = new Tripleta(i, i, this.nodoCabeza());
             x = new NodoDoble(t);
             x.setLd(x);
             x.setLi(x);
@@ -87,7 +80,7 @@ var MatrizForma1 = /** @class */ (function () {
         var i;
         tx = x.getDato();
         p = this.primerNodo();
-        for (var i_2 = 1; i_2 < tx.getFila(); i_2++) {
+        for (var i_1 = 1; i_1 < tx.getFila(); i_1++) {
             tp = p.getDato();
             p = tp.getValor();
         }
@@ -112,7 +105,7 @@ var MatrizForma1 = /** @class */ (function () {
         var i;
         tx = x.getDato();
         p = this.primerNodo();
-        for (var i_3 = 1; i_3 < tx.getColumna(); i_3++) {
+        for (var i_2 = 1; i_2 < tx.getColumna(); i_2++) {
             tp = p.getDato();
             p = tp.getValor();
         }
@@ -212,7 +205,68 @@ var MatrizForma1 = /** @class */ (function () {
         return simetrica;
     };
     MatrizForma1.prototype.determinante = function () {
-        return;
+        if (this.numeroFilas() != this.numeroColumnas()) {
+            console.log("m*n");
+            return NaN;
+        }
+        var resultado = 0;
+        var p = this.primerNodo();
+        var q = p.getLd();
+        var tq, a;
+        //caso base
+        if (this.numeroFilas() == 1) {
+            if (q == p)
+                return 0;
+            tq = q.getDato();
+            resultado = tq.getValor();
+            return resultado;
+        }
+        while (q != p) {
+            tq = q.getDato();
+            a = tq.getValor();
+            a = a * (Math.pow(-1, (tq.getFila() + tq.getColumna())));
+            var matrizNueva = this.matrizNueva(tq.getColumna());
+            //console.log(a)
+            //to do: a*matriz más pequeña
+            resultado += (a * matrizNueva.determinante());
+            q = q.getLd();
+        }
+        return resultado;
+    };
+    MatrizForma1.prototype.matrizNueva = function (columna) {
+        var p, q, tq, tp, tx, x;
+        var n = this.numeroFilas();
+        var matrizNueva = new MatrizForma1(n - 1, n - 1);
+        matrizNueva.construyeNodosCabeza();
+        p = this.primerNodo();
+        tp = p.getDato();
+        p = tp.getValor();
+        var i = 0;
+        var j = 0;
+        while (!this.finDeRecorrido(p)) {
+            q = p.getLd();
+            while (q != p) {
+                tq = q.getDato();
+                if (tq.getColumna() != columna) {
+                    i = tq.getFila() - 1;
+                    j = tq.getColumna();
+                    if (j > columna)
+                        j--;
+                    tx = new Tripleta(i, j, tq.getValor());
+                    x = new NodoDoble(tx);
+                    matrizNueva.conectaPorFilas(x);
+                    matrizNueva.conectaPorColumnas(x);
+                }
+                q = q.getLd();
+            }
+            j = 0;
+            tp = p.getDato();
+            p = tp.getValor();
+        }
+        /*<console.log("\nmatriz: " + n)
+        matrizNueva.mostrarMatriz();
+        */
+        return matrizNueva;
     };
     /**
      * Calcula el punto de silla
@@ -260,7 +314,7 @@ var MatrizForma1 = /** @class */ (function () {
             tp = p.getDato();
             p = tp.getValor();
         }
-        respuesta = [-1];
+        respuesta = [0];
         return respuesta;
     };
     /**
