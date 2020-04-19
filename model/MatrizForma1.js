@@ -121,8 +121,9 @@ var MatrizForma1 = /** @class */ (function () {
         x.setLi(q);
     };
     /**
-     * Convierte un arreglo de dos dimensiones en una matriz en forma 1
-     * @param matrizArray Arreglo de dos dimensiones que representa a una matriz
+     * Crea una matriz en forma de lista ligada en forma 1 dentro la matriz actual a partir de un arreglo de dos
+     * dimensiones que es pasado como parametro
+     * @param {Array} Arreglo de dos dimensiones con datos numericos que representa a una matriz
      */
     MatrizForma1.prototype.convertirAMatrizForma1 = function (matrizArray) {
         var m = this.numeroFilas();
@@ -142,6 +143,10 @@ var MatrizForma1 = /** @class */ (function () {
             }
         }
     };
+    /**
+     * Crea una matriz en forma de lista ligada en forma 1 correspondiente a la traspuesta de la matriz actual
+     * @returns {MatrizForma1} lista ligada en forma 1 que es la traspuesta de la matriz
+     */
     MatrizForma1.prototype.traspuesta = function () {
         var q, tq, tx, x;
         var p = this.nodoCabeza();
@@ -167,7 +172,7 @@ var MatrizForma1 = /** @class */ (function () {
     };
     /**
      * Determina si la matriz es simetrica comparandola con su traspuesta
-     * @returns booleano con valor true si es simetrica, false de lo contrario
+     * @returns {boolean} booleano con valor true si es simetrica, false de lo contrario
      */
     MatrizForma1.prototype.simetrica = function () {
         var p1, p2, q1, q2;
@@ -204,6 +209,11 @@ var MatrizForma1 = /** @class */ (function () {
         }
         return simetrica;
     };
+    /**
+     * Metodo recursivo para calcular el determinante de la matriz basado en la representacion actual de la misma
+     * @returns {number} un numero correspondiente al determinante de la matriz. Retorna NaN si no es una matriz
+     * cuadrada
+     */
     MatrizForma1.prototype.determinante = function () {
         if (this.numeroFilas() != this.numeroColumnas()) {
             console.log("m*n");
@@ -233,6 +243,12 @@ var MatrizForma1 = /** @class */ (function () {
         }
         return resultado;
     };
+    /**
+     * Genera una nueva matriz representada como lista ligada en forma 1 a partir de la matriz actual
+     * omitiendo la primera fila y la columna correspondiente al numero que es pasado como parametro
+     * @param columna numero de columna que será omitida en la creacion de la nueva matriz
+     * @returns {MatrizForma1} objeto de la clase MatrizForma1 que representa a la nueva matriz
+     */
     MatrizForma1.prototype.matrizNueva = function (columna) {
         var p, q, tq, tp, tx, x;
         var n = this.numeroFilas();
@@ -263,16 +279,13 @@ var MatrizForma1 = /** @class */ (function () {
             tp = p.getDato();
             p = tp.getValor();
         }
-        /*<console.log("\nmatriz: " + n)
-        matrizNueva.mostrarMatriz();
-        */
         return matrizNueva;
     };
     /**
      * Calcula el punto de silla
      * @returns retorna un arreglo de numeros. Si la matriz tiene punto de silla
-     * retornará un arreglo en el que la primera posición será un 1 (de lo contrario un -1),
-     * los siguiente indices del arreglo corresponden a la fila, columna y valor del punto de silla.
+     * retornará un arreglo en el que la primera posición será un 1 (de lo contrario un 0),
+     * los siguientes indices del arreglo corresponden a la fila, columna y valor del punto de silla.
      */
     MatrizForma1.prototype.puntoSilla = function () {
         var respuesta;
@@ -317,11 +330,6 @@ var MatrizForma1 = /** @class */ (function () {
         respuesta = [0];
         return respuesta;
     };
-    /**
-     * Busca el menor dato de una fila en particular en la matriz traspuesta de la matriz original
-     * @param pp Nodo doble que indica lista ligada de la fila sobre la cual se buscará el menor dato
-     * @param nc numero que indica la cantidad de columnas
-     */
     MatrizForma1.prototype.filaMenorDato = function (pp, nc) {
         var menor, j, columna, k, p;
         var qq, tx;
@@ -373,11 +381,6 @@ var MatrizForma1 = /** @class */ (function () {
         }
         return 0;
     };
-    /**
-     * Busca el mayor dato de una columna en particular en la matriz traspuesta de la matriz original
-     * @param pp Nodo doble que indica lista ligada de la columna sobre la cual se buscará el mayor dato
-     * @param nc numero que indica la cantidad de filas
-     */
     MatrizForma1.prototype.columnaMayorDato = function (pp, nc) {
         var j, mayor, fila, k, p;
         var qq, tx;

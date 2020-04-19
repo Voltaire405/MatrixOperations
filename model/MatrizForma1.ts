@@ -142,8 +142,9 @@ class MatrizForma1{
     }
     
     /**
-     * Convierte un arreglo de dos dimensiones en una matriz en forma 1
-     * @param matrizArray Arreglo de dos dimensiones que representa a una matriz 
+     * Crea una matriz en forma de lista ligada en forma 1 dentro la matriz actual a partir de un arreglo de dos 
+     * dimensiones que es pasado como parametro
+     * @param {Array} Arreglo de dos dimensiones con datos numericos que representa a una matriz 
      */
     public convertirAMatrizForma1(matrizArray: number[][]): void{
         let m=this.numeroFilas();
@@ -165,6 +166,11 @@ class MatrizForma1{
         }
     }
 
+
+    /**
+     * Crea una matriz en forma de lista ligada en forma 1 correspondiente a la traspuesta de la matriz actual
+     * @returns {MatrizForma1} lista ligada en forma 1 que es la traspuesta de la matriz
+     */
     public traspuesta(): MatrizForma1{
         let q, tq, tx, x;
         let p=this.nodoCabeza();
@@ -192,7 +198,7 @@ class MatrizForma1{
 
     /**
      * Determina si la matriz es simetrica comparandola con su traspuesta
-     * @returns booleano con valor true si es simetrica, false de lo contrario
+     * @returns {boolean} booleano con valor true si es simetrica, false de lo contrario
      */
     public simetrica():boolean{
 
@@ -239,6 +245,11 @@ class MatrizForma1{
         return simetrica;
     }
 
+    /**
+     * Metodo recursivo para calcular el determinante de la matriz basado en la representacion actual de la misma
+     * @returns {number} un numero correspondiente al determinante de la matriz. Retorna NaN si no es una matriz 
+     * cuadrada
+     */
     public determinante():number{
         if(this.numeroFilas()!=this.numeroColumnas()){
             console.log("m*n");
@@ -272,6 +283,12 @@ class MatrizForma1{
         return resultado;
     }
 
+    /**
+     * Genera una nueva matriz representada como lista ligada en forma 1 a partir de la matriz actual
+     * omitiendo la primera fila y la columna correspondiente al numero que es pasado como parametro
+     * @param columna numero de columna que será omitida en la creacion de la nueva matriz
+     * @returns {MatrizForma1} objeto de la clase MatrizForma1 que representa a la nueva matriz
+     */
     public matrizNueva(columna: number):MatrizForma1{
         let p, q, tq, tp, tx, x
         let n=this.numeroFilas();
@@ -302,9 +319,6 @@ class MatrizForma1{
             tp=p.getDato();
             p=tp.getValor();
         }
-        /*<console.log("\nmatriz: " + n)
-        matrizNueva.mostrarMatriz();
-        */
 
         return matrizNueva;
     }
@@ -312,8 +326,8 @@ class MatrizForma1{
     /**
      * Calcula el punto de silla 
      * @returns retorna un arreglo de numeros. Si la matriz tiene punto de silla
-     * retornará un arreglo en el que la primera posición será un 1 (de lo contrario un -1),
-     * los siguiente indices del arreglo corresponden a la fila, columna y valor del punto de silla.
+     * retornará un arreglo en el que la primera posición será un 1 (de lo contrario un 0),
+     * los siguientes indices del arreglo corresponden a la fila, columna y valor del punto de silla.
      */
     public puntoSilla(): number[]{
         let respuesta;
@@ -359,11 +373,6 @@ class MatrizForma1{
         return respuesta;
     }
 
-    /**
-     * Busca el menor dato de una fila en particular en la matriz traspuesta de la matriz original
-     * @param pp Nodo doble que indica lista ligada de la fila sobre la cual se buscará el menor dato
-     * @param nc numero que indica la cantidad de columnas
-     */
     public filaMenorDato(pp:NodoDoble, nc:number):number{
         let menor, j, columna, k, p;
         let qq, tx;
@@ -410,11 +419,6 @@ class MatrizForma1{
     }
 
 
-    /**
-     * Busca el mayor dato de una columna en particular en la matriz traspuesta de la matriz original
-     * @param pp Nodo doble que indica lista ligada de la columna sobre la cual se buscará el mayor dato
-     * @param nc numero que indica la cantidad de filas
-     */
     public columnaMayorDato(pp: NodoDoble, nc:number):number{
         let j, mayor, fila, k, p;
         let qq, tx;
