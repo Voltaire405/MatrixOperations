@@ -1,4 +1,3 @@
-"use strict";
 var MatrizForma1 = /** @class */ (function () {
     function MatrizForma1(m, n) {
         var t = new Tripleta(m, n, null);
@@ -37,9 +36,9 @@ var MatrizForma1 = /** @class */ (function () {
                 qf = tq.getFila();
                 qc = tq.getColumna();
                 qv = tq.getValor();
-                console.log("\nfila: " + qf +
-                    "\ncolumna: " + qc +
-                    "\nvalor: " + qv);
+                /* console.log("\nfila: " + qf +
+                "\ncolumna: "+ qc +
+                "\nvalor: " +qv); */
                 q = q.getLd();
             }
             tp = p.getDato();
@@ -216,7 +215,7 @@ var MatrizForma1 = /** @class */ (function () {
      */
     MatrizForma1.prototype.determinante = function () {
         if (this.numeroFilas() != this.numeroColumnas()) {
-            console.log("m*n");
+            /*  console.log("m*n"); */
             return NaN;
         }
         var resultado = 0;

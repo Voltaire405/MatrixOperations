@@ -1,3 +1,0 @@
-function isInvalidForm() {
-    return false;
-}

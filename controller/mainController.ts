@@ -57,7 +57,7 @@ document.getElementById('settingPanel').onsubmit = function () {
         alert('¡Posición ocupada! Ingrese otras coordenadas por favor.')
     }
 
-    console.log(mat);
+    
 
     return false;
 }

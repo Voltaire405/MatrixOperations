@@ -45,9 +45,9 @@ class MatrizForma1{
                 qf=tq.getFila();
                 qc=tq.getColumna();
                 qv=tq.getValor();
-                console.log("\nfila: " + qf +
+                /* console.log("\nfila: " + qf +
                 "\ncolumna: "+ qc +
-                "\nvalor: " +qv);
+                "\nvalor: " +qv); */
                 q=q.getLd();
             }
 
@@ -252,7 +252,7 @@ class MatrizForma1{
      */
     public determinante():number{
         if(this.numeroFilas()!=this.numeroColumnas()){
-            console.log("m*n");
+           /*  console.log("m*n"); */
             return NaN;
         }
         let resultado=0;

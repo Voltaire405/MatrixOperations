@@ -17,14 +17,17 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="./view/styles/styles.css/">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <title>Matrices Dispersas</title>
 </head>
 
 <body class="container">
-    <h2>Representación de Matrices Dispersas</h1>
+    <h2 id="title">Representación de Matrices Dispersas</h1>
 
         <section id="representation" class="row container" style="display: none;">
-            <div id="rep1" style="height: 640px; overflow: scroll;" class="col-md-6">
+            <div id="rep1" style="height: 480px; overflow: scroll;" class="col-md-12">
                 <svg
                     style="left: 0px; top: 0px; width: 100%; height: 100%; display: block; min-width: 1893px; min-height: 1507px; background-color: transparent; background-image: none;">
                     <defs>
@@ -37,17 +40,22 @@
                             <feBlend in="SourceGraphic" in2="offsetBlur"></feBlend>
                         </filter>
                     </defs>
-                    <g transformOrigin="0 0" transform="scale(0.65,0.65)translate(-101,-28)" id="graphics_container">
+                    <g transformOrigin="0 0" transform="scale(0.6,0.6)translate(-101,-28)" id="graphics_container">
 
                     </g>
                 </svg>
+
+                <label for="rep2">Representación de Matricial por Cuadrículas</label>
+                <div id="rep2" class="col-md-3"></div>
+
             </div>
 
-            <div id="rep2" class="col-md-5"></div>
+            
         </section>
         <hr>
-        <div id="userpanel" class="row">
-            <form class="form-group col-md-3" id="settingPanel">
+        <div id="userpanel" class="row col-md-12">
+            
+            <form class="form-group col-md-4" id="settingPanel">
                 <div>
                     <div class="component">
                         <label for="dim">Dimensión de la matriz</label>
@@ -88,13 +96,13 @@
                 <button type="button" class="btn btn-success btn-sm" id="printBtn"
                     style="display: none;">Graficar</button>
             </form>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label for="counter">Datos Ingresados:</label>
                 <input type="number" disabled id="counter" value="0" size="1">
                 <button type="button" class="btn btn-danger btn-sm" id="clearBtn">limpiar</button>
             </div>
 
-            <div class="col-md-3" id="operationsPanel">
+            <div class="col-md-3" id="operationsPanel" style="display: none;">
                 <label for="calcSelect">Operaciones</label>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
@@ -109,6 +117,15 @@
                 </div>
             </div>
         </div>
+
+        <footer class="page-footer" id="footer">
+
+
+            <div class="footer-copyright text-center py-3">© 2020 Copyright: Jose Marín - Yohel Pérez para LyR III UdeA            
+            </div>
+            <!-- Copyright -->
+    
+        </footer>
 
         <script src="controller/components.js"></script>
         <script src="model/prototypeFunctions.js"></script>

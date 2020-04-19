@@ -50,7 +50,6 @@ document.getElementById('settingPanel').onsubmit = function () {
     else {
         alert('¡Posición ocupada! Ingrese otras coordenadas por favor.');
     }
-    console.log(mat);
     return false;
 };
 document.getElementById('printBtn').onclick = function () {
