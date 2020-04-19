@@ -390,6 +390,8 @@ var MatrizForma1 = /** @class */ (function () {
         qq = pp.getLi();
         while (qq != pp) {
             j++;
+            if (qq == null)
+                return 0;
             tx = qq.getDato();
             if (tx.getValor() > mayor) {
                 mayor = tx.getValor();

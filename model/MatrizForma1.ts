@@ -428,6 +428,7 @@ class MatrizForma1{
         qq=pp.getLi();
         while(qq!=pp){
             j++;
+            if(qq==null)return 0;
             tx=qq.getDato();
             if(tx.getValor()>mayor){
                 mayor=tx.getValor();
